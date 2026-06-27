@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:           #FAF0F4;
+      --pink-soft:    #F4C8D8;
+      --pink-accent:  #DFA0BC;
+      --blue-soft:    #C2D8EE;
+      --blue-accent:  #8ABBD8;
+      --text-dark:    #3A3248;
+      --text-mid:     #9080A4;
+      --fade-pink:    rgba(244, 200, 216, 0.35);
+      --fade-blue:    rgba(194, 216, 238, 0.40);
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Jost', sans-serif;
+      overflow: hidden;
+    }
+
+    /* ── ambient background ── */
+    .blobs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+    }
+
+    .blob-tl {
+      width: 560px;
+      height: 560px;
+      background: var(--fade-pink);
+      top: -160px;
+      left: -160px;
+    }
+
+    .blob-br {
+      width: 480px;
+      height: 480px;
+      background: var(--fade-blue);
+      bottom: -140px;
+      right: -140px;
+    }
+
+    .blob-mid {
+      width: 260px;
+      height: 260px;
+      background: rgba(138, 187, 216, 0.18);
+      top: 42%;
+      left: 58%;
+    }
+
+    /* ── main card ── */
+    .card {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 3rem 2rem;
+      max-width: 680px;
+      width: 100%;
+    }
+
+    /* ── botanical sprig ── */
+    .sprig {
+      display: block;
+      margin: 0 auto 2.4rem;
+    }
+
+    /* ── author name ── */
+    .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      color: var(--text-dark);
+      line-height: 1;
+      letter-spacing: 0.015em;
+    }
+
+    /* ── ornamental rule ── */
+    .rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      margin: 1.8rem auto;
+    }
+
+    .rule-line {
+      width: 64px;
+      height: 1px;
+      background: var(--pink-accent);
+      opacity: 0.7;
+    }
+
+    .rule-dot {
+      width: 5px;
+      height: 5px;
+      background: var(--blue-accent);
+      border-radius: 50%;
+    }
+
+    /* ── label ── */
+    .label {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.7rem;
+      letter-spacing: 0.42em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+
+    /* ── tagline ── */
+    .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(1rem, 2.4vw, 1.2rem);
+      color: var(--text-mid);
+      margin-top: 1.6rem;
+      letter-spacing: 0.015em;
+      line-height: 1.6;
+    }
+
+    /* ── footer ── */
+    .footer {
+      position: fixed;
+      bottom: 1.6rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--pink-accent);
+      opacity: 0.65;
+    }
+
+    /* ── animations ── */
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .sprig   { animation: riseIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
+    .name    { animation: riseIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.25s both; }
+    .rule    { animation: riseIn 1.2s cubic-bezier(0.22,1,0.36,1) 0.45s both; }
+    .label   { animation: riseIn 1.2s cubic-bezier(0.22,1,0.36,1) 0.55s both; }
+    .tagline { animation: riseIn 1.2s cubic-bezier(0.22,1,0.36,1) 0.70s both; }
+    .footer  { animation: riseIn 1.0s cubic-bezier(0.22,1,0.36,1) 1.0s both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; }
+    }
+
+    @media (max-width: 420px) {
+      .name { font-size: 2.8rem; }
+      .rule-line { width: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ambient blobs -->
+  <div class="blobs" aria-hidden="true">
+    <div class="blob blob-tl"></div>
+    <div class="blob blob-br"></div>
+    <div class="blob blob-mid"></div>
+  </div>
+
+  <main class="card">
+
+    <!-- botanical sprig -->
+    <svg class="sprig" aria-hidden="true"
+         width="130" height="78" viewBox="0 0 130 78"
+         fill="none" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- central stem -->
+      <path d="M65 72 C65 60 65 38 65 10" stroke="#DFA0BC" stroke-width="1.3" stroke-linecap="round"/>
+
+      <!-- left branches -->
+      <path d="M65 48 C56 42 44 39 33 35" stroke="#C2D8EE" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M65 32 C57 26 47 23 38 18" stroke="#C2D8EE" stroke-width="1.0" stroke-linecap="round" opacity="0.85"/>
+
+      <!-- right branches -->
+      <path d="M65 48 C74 42 86 39 97 35" stroke="#C2D8EE" stroke-width="1.1" stroke-linecap="round"/>
+      <path d="M65 32 C73 26 83 23 92 18" stroke="#C2D8EE" stroke-width="1.0" stroke-linecap="round" opacity="0.85"/>
+
+      <!-- leaves — lower left -->
+      <ellipse cx="33" cy="35" rx="7.5" ry="4.2" fill="#C2D8EE" opacity="0.55" transform="rotate(-14 33 35)"/>
+      <ellipse cx="47" cy="37" rx="6"   ry="3.5" fill="#C2D8EE" opacity="0.45" transform="rotate(-9  47 37)"/>
+
+      <!-- leaves — lower right -->
+      <ellipse cx="97" cy="35" rx="7.5" ry="4.2" fill="#C2D8EE" opacity="0.55" transform="rotate(14 97 35)"/>
+      <ellipse cx="83" cy="37" rx="6"   ry="3.5" fill="#C2D8EE" opacity="0.45" transform="rotate(9  83 37)"/>
+
+      <!-- leaves — upper left -->
+      <ellipse cx="38" cy="18" rx="6.5" ry="3.5" fill="#EFC5D4" opacity="0.60" transform="rotate(-22 38 18)"/>
+      <ellipse cx="50" cy="23" rx="5"   ry="3"   fill="#EFC5D4" opacity="0.48" transform="rotate(-15 50 23)"/>
+
+      <!-- leaves — upper right -->
+      <ellipse cx="92" cy="18" rx="6.5" ry="3.5" fill="#EFC5D4" opacity="0.60" transform="rotate(22 92 18)"/>
+      <ellipse cx="80" cy="23" rx="5"   ry="3"   fill="#EFC5D4" opacity="0.48" transform="rotate(15 80 23)"/>
+
+      <!-- tip blossom -->
+      <circle cx="65" cy="10" r="5"   fill="#F4C8D8" opacity="0.85"/>
+      <circle cx="65" cy="10" r="3"   fill="#DFA0BC" opacity="0.90"/>
+      <circle cx="65" cy="10" r="1.2" fill="#3A3248" opacity="0.35"/>
+
+      <!-- small berries -->
+      <circle cx="29"  cy="31" r="2.2" fill="#8ABBD8" opacity="0.65"/>
+      <circle cx="101" cy="31" r="2.2" fill="#8ABBD8" opacity="0.65"/>
+      <circle cx="35"  cy="14" r="2"   fill="#8ABBD8" opacity="0.55"/>
+      <circle cx="95"  cy="14" r="2"   fill="#8ABBD8" opacity="0.55"/>
+    </svg>
+
+    <!-- name — replace with the author's real name -->
+    <h1 class="name">Margo Linjamaa</h1>
+
+    <!-- ornamental rule -->
+    <div class="rule" aria-hidden="true">
+      <div class="rule-line"></div>
+      <div class="rule-dot"></div>
+      <div class="rule-line"></div>
+    </div>
+
+    <!-- label -->
+    <p class="label">Coming Soon</p>
+
+    <!-- tagline -->
+    <p class="tagline">Something beautiful is on its way.</p>
+
+  </main>
+
+  <footer class="footer" aria-hidden="true">
+    &copy; 2026
+  </footer>
+
+</body>
+</html>
