@@ -33,6 +33,10 @@
 
     body {
       background-color: var(--bg);
+      background-image:
+        radial-gradient(ellipse 70% 60% at 0% 0%,   rgba(244, 200, 216, 0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 65% 55% at 100% 100%, rgba(194, 216, 238, 0.50) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 70% 40%,  rgba(138, 187, 216, 0.18) 0%, transparent 65%);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -41,48 +45,9 @@
       overflow: hidden;
     }
 
-    /* ── ambient background ── */
-    .blobs {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(90px);
-    }
-
-    .blob-tl {
-      width: 560px;
-      height: 560px;
-      background: var(--fade-pink);
-      top: -160px;
-      left: -160px;
-    }
-
-    .blob-br {
-      width: 480px;
-      height: 480px;
-      background: var(--fade-blue);
-      bottom: -140px;
-      right: -140px;
-    }
-
-    .blob-mid {
-      width: 260px;
-      height: 260px;
-      background: rgba(138, 187, 216, 0.18);
-      top: 42%;
-      left: 58%;
-    }
-
     /* ── main card ── */
     .card {
       position: relative;
-      z-index: 1;
       text-align: center;
       padding: 3rem 2rem;
       max-width: 680px;
@@ -192,13 +157,6 @@
 </head>
 <body>
 
-  <!-- ambient blobs -->
-  <div class="blobs" aria-hidden="true">
-    <div class="blob blob-tl"></div>
-    <div class="blob blob-br"></div>
-    <div class="blob blob-mid"></div>
-  </div>
-
   <main class="card">
 
     <!-- botanical sprig -->
@@ -246,7 +204,7 @@
     </svg>
 
     <!-- name — replace with the author's real name -->
-    <h1 class="name">Margo Linjamaa</h1>
+    <h1 class="name">Author Name</h1>
 
     <!-- ornamental rule -->
     <div class="rule" aria-hidden="true">
